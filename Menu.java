@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class Menu {
     private String[] menuOptions = {"Exit", "List Products", "Buy Product", "Find Product", "Show Cart", "Checkout"};
-    private String[] products = {};
+    private String[] products = {"Shirt", "Pants"};
     private Scanner scanner;
 
     /**
@@ -57,6 +57,12 @@ public class Menu {
 
                 case 3:
                     System.out.println("Enter the item you are searching for:");
+                    String itemToFind = getNextStringFromUser();
+
+                    if (findProduct(itemToFind) != -1) {
+                        System.out.println(itemToFind);
+                        System.out.println(" was found and its product id is " + findProduct(itemToFind));
+                    }
                     break;
 
                 case 4: 
@@ -64,7 +70,7 @@ public class Menu {
                     break;
 
                 case 5:
-                    System.out.println(Not implemented yet, choose another option.");
+                    System.out.println("Not implemented yet, choose another option.");
                     break;
             }
         } while(true);
@@ -77,11 +83,30 @@ public class Menu {
         System.out.println();
         System.out.println("--Main Menu--");
 
-        for (i = 0; i < menuOptions.length(); i++) {
+        for (int i = 0; i < menuOptions.length; i++) {
             System.out.println(i + ": ");
             System.out.println("menuOptions[i]");
         }
       }
+
+      private void printProducts() {
+        System.out.println();
+        System.out.println("--Products--");
+
+        for (int i = 0; i < products.length; i++) {
+            System.out.println("ID: ");
+            System.out.println(products[i]);
+        }
+      }
+
+      private int findProduct(String itemToFind) {
+        for (int i = 0; i < products.length; i++) {
+            if (itemToFind.equals(products[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
       /**
        * This method prints a exit message and closes the program.
@@ -90,4 +115,12 @@ public class Menu {
         System.out.println("Exiting now, goodbye.");
         scanner.close();
       }
+
+    private int getNextIntFromUser() {
+       return scanner.nextInt();
+    }
+
+    private String getNextStringFromUser() {
+       return scanner.nextLine();
+    }
 }
