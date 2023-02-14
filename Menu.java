@@ -77,6 +77,18 @@ public class Menu {
       }
 
       /**
+       * This method prints the greeting message to the user and asks for name input
+       * The name of the user is stored in the name variable. 
+       * Then it returns the name and the greeting message.
+       */
+      public void greet() {
+        System.out.println("Hello! Please enter your name.");
+        String name = scanner.nextLine();
+        
+        System.out.println("Welcome " + name + " to T-Shirt Mart!");
+      }
+
+      /**
        * This method prints out the menu options
        */
       private void printMenu() {
@@ -89,6 +101,9 @@ public class Menu {
         }
       }
 
+      /**
+       * This method prints the products that are available in the store
+       */
       private void printProducts() {
         System.out.println();
         System.out.println("--Products--");
@@ -98,7 +113,13 @@ public class Menu {
             System.out.println(products[i]);
         }
       }
-
+      /**
+       * This method takes the item thats being searched for and compares it to the stored products
+       * If the item the user is looking for is in the stores products then the method returns the 
+       * Index of the item, If the item is not found then the method returns a -1. 
+       * @param itemToFind
+       * @return index of item or -1 if item is not present
+       */
       private int findProduct(String itemToFind) {
         for (int i = 0; i < products.length; i++) {
             if (itemToFind.equals(products[i])) {
@@ -106,21 +127,22 @@ public class Menu {
             }
         }
         return -1;
-    }
+        }
 
       /**
-       * This method prints a exit message and closes the program.
+       * This method prints an exit message and closes the program.
        */
-      private void exit() {
+        private void exit() {
         System.out.println("Exiting now, goodbye.");
         scanner.close();
-      }
+        }
 
-    private int getNextIntFromUser() {
-       return scanner.nextInt();
-    }
+        private int getNextIntFromUser() {
+            return scanner.nextInt();
+        }
 
-    private String getNextStringFromUser() {
-       return scanner.nextLine();
+        private String getNextStringFromUser() {
+            scanner.nextLine();
+            return scanner.nextLine();
     }
 }
